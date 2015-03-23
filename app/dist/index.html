@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multi parent graph</title>
+	<link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+	<section class="container-fluid greeting-section">
+		<div class="row">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p class="col-md-6 col-md-offset-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quisquam saepe amet quam repellendus ad doloremque tenetur, assumenda, vero facere fugiat 	minus delectus perferendis, totam omnis necessitatibus quaerat, voluptate excepturi.
+			</p>
+		</div>
+		<div class="container-fluid btn-wrap">
+			<button class='btn btn-info col-md-2 col-md-offset-5 btn-starttest'>Пройти тестування</button>
+		</div>
+	</section>
+	<section class="container-fluid col-md-12 test-section">
+		<section class="question-section col-md-offset-1 col-md-6">
+			<span class="question-number">Запитання <span class="number">1</span>:</span>
+			<span class="question">Тобі подобаються динамічні мови програмування?</span>
+			<ul>
+				<li><input type="radio" name="answer" value="Yes" required="required"/><span class="answer">Так</span></li>
+				<li><input type="radio" name="answer" value="No" required="required"/><span class="answer">Ні</span></li>
+			</ul>
+			<button class="btn btn-default col-md-offset-5 col-md-2">Далі</button>
+		</section>
+		<section class="progress-section col-md-4">
+			<svg class="progress-graph"></circle>
+			</svg>
+			<span class="progress-percent">28%</span>
+		</section>
+	</section>
+	<script src="../vendor/jquery/dist/jquery.min.js"></script>
+	<script src="../vendor/snap.svg/dist/snap.svg-min.js"></script>
+	<script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+body {
+	height: 100vh;
+	overflow: hidden;
+
+	.greeting-section {
+		background-image: url(../img/bg.jpg);
+		position: absolute;
+		z-index: 100;
+		top: 0;
+
+		h1 {
+			margin-top: 15%;
+			text-align: center;
+			font-size: 3em;
+			color: #fff;
+		}
+
+		p {
+			margin-top: 3%;
+			color: #fff;
+			text-align: center;
+		}
+
+		.btn-starttest {
+			height: 3em;
+			margin-top: 5%;
+			text-transform: uppercase;
+		}
+
+		height: 100vh;
+	}
+
+	.test-section {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		.question-section {
+			ul {
+				list-style: none;
+			}
+
+			.question-number {
+				font-weight: 700;
+				font-size: 1.5em;
+				color: #444;
+			}
+
+			span.question, span.answer {
+				font-size: 1.3em;
+			}
+
+			span.answer {
+				margin-left: 1em;
+			}
+
+			ul {
+				margin: 2em;
+				margin-left: 3em;
+				input {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.progress-section {
+			span.progress-percent {
+			  	display: block;
+			  	position: relative;
+			  	bottom: 100px;
+			  	left: 2px;
+			  	text-align: center;
+				font-weight: 700;
+			  	font-size: 2.5em;
+			  	color: #444;
+			}
+
+			svg.progress-graph {
+				display: block;
+				width: 150px;
+				height: 150px;
+				margin: 0 auto;
+				
+				circle.circle-inner {
+					stroke-width: 1px;
+					stroke: #ccc;
+					fill: none;
+				}
+
+				circle.circle-outer {
+					stroke-width: 1px;
+					stroke: #ccc;
+					fill: none;
+				}
+
+				path.path-progress {
+					fill: green;
+				}
+			}
+		}
+	}
+}
+

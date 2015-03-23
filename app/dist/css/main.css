@@ -1,0 +1,65 @@
+body {
+  height: 100vh;
+  overflow: hidden; }
+  body .greeting-section {
+    background-image: url(../img/bg.jpg);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    height: 100vh; }
+    body .greeting-section h1 {
+      margin-top: 15%;
+      text-align: center;
+      font-size: 3em;
+      color: #fff; }
+    body .greeting-section p {
+      margin-top: 3%;
+      color: #fff;
+      text-align: center; }
+    body .greeting-section .btn-starttest {
+      height: 3em;
+      margin-top: 5%;
+      text-transform: uppercase; }
+  body .test-section {
+    position: absolute;
+    z-index: 10;
+    top: 0; }
+    body .test-section .question-section ul {
+      list-style: none; }
+    body .test-section .question-section .question-number {
+      font-weight: 700;
+      font-size: 1.5em;
+      color: #444; }
+    body .test-section .question-section span.question, body .test-section .question-section span.answer {
+      font-size: 1.3em; }
+    body .test-section .question-section span.answer {
+      margin-left: 1em; }
+    body .test-section .question-section ul {
+      margin: 2em;
+      margin-left: 3em; }
+      body .test-section .question-section ul input {
+        cursor: pointer; }
+    body .test-section .progress-section span.progress-percent {
+      display: block;
+      position: relative;
+      bottom: 100px;
+      left: 2px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.5em;
+      color: #444; }
+    body .test-section .progress-section svg.progress-graph {
+      display: block;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto; }
+      body .test-section .progress-section svg.progress-graph circle.circle-inner {
+        stroke-width: 1px;
+        stroke: #ccc;
+        fill: none; }
+      body .test-section .progress-section svg.progress-graph circle.circle-outer {
+        stroke-width: 1px;
+        stroke: #ccc;
+        fill: none; }
+      body .test-section .progress-section svg.progress-graph path.path-progress {
+        fill: green; }
