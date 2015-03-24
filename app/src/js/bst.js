@@ -1,17 +1,19 @@
 // Implementation of multiparent graph
 
-var Graph = Graph || {};
+var Application = Application || {};
+
+Application.Graph = Application.Graph || {};
 
 (function (global) {
 
 	// Explicit definition of all variables at the top of the scope
 	var get, set, addParent, removeParent, addChild, removeParent;
 
-	Graph.Node = function (data) {
+	Application.Graph.Node = function (data) {
 
 		// Preventing for invoking w/o new keyword
-		if(!(this instanceof Graph.Node)) {
-			return new Graph.Node();
+		if(!(this instanceof Application.Graph.Node)) {
+			return new Application.Graph.Node();
 		}
 
 		// Definition of the elements needed for Node class
@@ -30,11 +32,11 @@ var Graph = Graph || {};
 	}
 
 
-	Graph.LeafNode = function (data) {
+	Application.Graph.LeafNode = function (data) {
 		
 		// Preventing for invoking w/o new keyword
-		if(!(this instanceof Graph.LeafNode)) {
-			return new Graph.LeafNode();
+		if(!(this instanceof Application.Graph.LeafNode)) {
+			return new Application.Graph.LeafNode();
 		}
 
 		// Definition of the elements needed for LeafNode class
@@ -113,18 +115,18 @@ var Graph = Graph || {};
 	};
 
 	// Saving created methods in prototype
-	Graph.Node.prototype.set = set;
-	Graph.Node.prototype.get = get;
-	Graph.Node.prototype.addParent = addParent;
-	Graph.Node.prototype.removeParent = removeParent;
-	Graph.Node.prototype.addChild = addChild;
-	Graph.Node.prototype.removeChild = removeChild;
+	Application.Graph.Node.prototype.set = set;
+	Application.Graph.Node.prototype.get = get;
+	Application.Graph.Node.prototype.addParent = addParent;
+	Application.Graph.Node.prototype.removeParent = removeParent;
+	Application.Graph.Node.prototype.addChild = addChild;
+	Application.Graph.Node.prototype.removeChild = removeChild;
 
-	Graph.LeafNode.prototype.set = set;
-	Graph.LeafNode.prototype.get = get;
-	Graph.LeafNode.prototype.addParent = addParent;
-	Graph.LeafNode.prototype.removeParent = removeParent;
-	Graph.LeafNode.prototype.addChild = addChild;
-	Graph.LeafNode.prototype.removeChild = removeChild;
+	Application.Graph.LeafNode.prototype.set = set;
+	Application.Graph.LeafNode.prototype.get = get;
+	Application.Graph.LeafNode.prototype.addParent = addParent;
+	Application.Graph.LeafNode.prototype.removeParent = removeParent;
+	Application.Graph.LeafNode.prototype.addChild = addChild;
+	Application.Graph.LeafNode.prototype.removeChild = removeChild;
 
 })(this);

@@ -1,10 +1,16 @@
+var Application = Application || {};
+
 (function () {
 	var startTestBtn = $('.btn-starttest'),
+		nextBtn = $('.btn-next'),
 		greetingsScreen = $('.greeting-section'),
-		s = Snap('.progress-graph'),
-		outerCircle,
-		innerCircle,
-		progressPath;
+		question = $('.question'),
+		questionNumber = $('.number'),
+		questionCounter = 1,
+		activeNode = Application.questions[0];
+
+	question.text(activeNode.get('data'));	
+	questionNumber.text(questionCounter);
 
 	startTestBtn.click(function () {
 		greetingsScreen.animate({
@@ -17,12 +23,26 @@
 		});
 	});	
 
-	outerCircle = s.circle(75, 75, 74);
-	innerCircle = s.circle(75, 75, 60);
-	outerCircle.addClass('circle-outer');
-	innerCircle.addClass('circle-inner');
+	nextBtn.click(function () {
+		var answer;
+		
+		if($('#answer-affirmative').prop('checked')) {
+			answer = 0;
+		}
+		if($('#answer-negative').prop('checked')) {
+			answer = 1;
+		}
+		if(answer !== undefined) {
+			activeNode = activeNode.get('children')[answer];
+			if(activeNode instanceof Application.Graph.Node) {
+				question.text(activeNode.get('data'));
+				questionCounter += 1;
+				questionNumber.text(questionCounter);
+			} else if(activeNode instanceof Application.Graph.LeafNode) {
+				alert(activeNode.get('data'));
+			}
 
-	//progressPath = s.circle(75, 75, 72);
+		}
+	});
 
-	//progressPath.addClass('path-progress');
 })();
