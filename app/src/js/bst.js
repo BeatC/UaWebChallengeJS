@@ -2,217 +2,129 @@
 
 var Graph = Graph || {};
 
+(function (global) {
 
-// Definition of Node module
-Graph.Node = (function (global) {
-	// Defining private fields
-	var elements = {
-				leftChild: null,
-				rightChild: null,
-				parents: [],
-				data: null
-	};
+	// Explicit definition of all variables at the top of the scope
+	var get, set, addParent, removeParent, addChild, removeParent;
 
-	// Fabric method for extending new nodes
-	function extend (obj, cb) {
-		// Saving reference to the module scope
-		var that = this,
-			newNode;
+	Graph.Node = function (data) {
 
-		// Return shallow copied module
-		newNode = (function () {
-			// I defined left and right childs rather than defining them through the list because
-			// we know that there will be two childs in all cases. Consider replacing by list
-			// (it will make module scalable)
-			var elements = {};
-
-			for(var i in that.elements) {
-				if(that.elements.hasOwnProperty(i)) {
-					elements[i] = that.elements[i];
-				}
-			}
-
-			
-
-			// Getter for private fields
-			function get (name) {
-				var result;
-				if(elements[name]) {
-					if(typeof elements[name] === 'object') {
-						result = {};
-						// Shallow copy for arrays and objects
-						for(i in elements[name]) {
-							if(elements[name].hasOwnProperty(i)) {
-								result[i] = elements[name][i]; 
-							}
-						}
-					} else {
-						// Usual assigning for primitive values
-						result = elements[name];
-					}
-					return result;
-				} else {
-					// If element isn't exist
-					return null;
-				}
-			}
-
-			// Setter for private fields
-			function set (name, value) {
-				if(elements[name] !== undefined) {
-					elements[name] = value;
-				}
-			}
-
-			// Add parent
-			function addParent (parent, cb) {
-				// Checking for existing of this parent in the list.
-				var exists = parent in elements.parents;
-				
-				if(!exists) {
-					elements.parents.push(parent);
-				}
-					if(typeof cb === 'function') {
-					cb(!exitsts);
-				}
-			}
-
-			// Remove parent
-			function removeParent (parent, cb) {
-				if(parent in elements.parents) {
-					for(var i = 0, length = elements.parents.length; i < length; i += 1) {
-						if(elements.parents[i] === parent) {
-							// Removing parent from the list
-							elements.parents[i].splice(i - 1, 1);
-						}
-					}
-					// Calling back with removed parent
-					if(typeof cb === 'function') {
-						cb(parent);
-					}
-				}
-			}
-
-			//
-
-			var that = this;
-
-			return function Derived(data) {
-				if(!(this instanceof Derived)) {
-					return new Derived();
-				}
-				// Copying all exitsting fields
-				for(var i in that) {
-					if(that.hasOwnProperty(i)) {
-						this[i] = that[i];
-					}
-				}
-
-				// Copying customized fields
-				for(var i in obj) {
-					if(obj.hasOwnProperty(i)) {
-						this[i] = obj[i];
-					}
-				}
-
-				// Implicit return of the new instance
-				return this;
-			}
-			
-			//
-
-			return function Derived () {
-				Derived.prototype = Graph.Node;
-
-				if(!(this instanceof Graph.Node)) {
-					return new Derived();
-				}
-
-				for(var i in elements) {
-					
-				}
-			}
-
-			return {
-				set: set,
-				get: get,
-				extend: extend,
-				addParent: addParent,
-				removeParent: removeParent
-			};
-
-		})();
-
-		// Overriding values of private fields by parameter object
-		for(var i in obj) {
-			if(obj.hasOwnProperty(i)) {
-				newNode.set(i, obj[i]);
-			}
+		// Preventing for invoking w/o new keyword
+		if(!(this instanceof Graph.Node)) {
+			return new Graph.Node();
 		}
 
-		// Checking if callback exists
-		if(typeof cb === 'function') {
-			cb(this);
-		}
-		
-		return newNode;
-	}
+		// Definition of the elements needed for Node class
+		this.elements = {
+			children: [],
+			parents: [],
+			data: null
+		};
 
-	// Definition of public fields
-	return {
-		extend: extend
-	};
-
-})(this);
-
-// Definition of LeafNode module. In our task it will represent final result of answering all questions
-Graph.LeafNode = (function (global) {
-
-})(this);
-
-var root = Graph.Node.extend({
-	data: {
-		questions: "Do you like JavaScript?",
-		answer: true
-	}
-});
-
-var node = root.extend({
-	leftChild: 3,
-	data: {
-		questions: "That's good?",
-		answer: true
-	}
-});
-
-var bar = node.extend();
-
-console.log(root.get('data'));
-console.log(node.get('data'));
-console.log(bar.get('data'));
-
-function extend (obj) {
-	var that = this;
-
-	return function Derived(data) {
-		if(!(this instanceof Derived)) {
-			return new Derived();
-		}
-		// Copying all exitsting fields
-		for(var i in that) {
-			if(that.hasOwnProperty(i)) {
-				this[i] = that[i];
-			}
+		if(data !== undefined) {
+			this.elements.data = data;
 		}
 
-		// Copying customized fields
-		for(var i in obj) {
-			if(obj.hasOwnProperty(i)) {
-				this[i] = obj[i];
-			}
-		}
-
-		// Implicit return of the new instance
+		// Explicit returning of the new instance
 		return this;
 	}
-}
+
+
+	Graph.LeafNode = function (data) {
+		
+		// Preventing for invoking w/o new keyword
+		if(!(this instanceof Graph.LeafNode)) {
+			return new Graph.LeafNode();
+		}
+
+		// Definition of the elements needed for LeafNode class
+		this.elements = {
+			parents: [],
+			data: null
+		};
+		
+		if(data !== undefined) {
+			this.elements.data = data;
+		}
+
+		// Explicit returning of the new instance
+		return this;
+	}
+
+	get = function (name) {
+		if(name in this.elements) {
+			return this.elements[name];
+		} else {
+			return null;
+		}
+	};
+
+	set = function (name, value) {
+		if(name in this.elements) {
+			if(value !== undefined) {
+					this.elements[name] = value;
+			}
+			return null;
+		}
+		return null;
+	};
+
+	// Just syntactical sugar for 'push'
+	addParent = function (parent) {
+		var parents = this.elements.parents;
+		parents.push(parent);
+		parents[parents.length - 1].elements.children.push(this);
+	};
+
+
+	removeParent = function (parent) {
+		if (parent in this.parents) {
+			var parents = this.elements.parents;
+			for(var i = 0, length = parents.length; i < length; i += 1) {
+				if(parent in parents) {
+					// Delete such element from the list
+					parents.splice(i - 1, 1);
+				}
+			}
+			parent.removeChild(this);
+		} else {
+			return null;
+		}
+	};
+
+	// The same as 'addParent'
+	addChild = function (child) {
+		var children = this.elements.children;
+		children.push(child);
+		children[children.length - 1].elements.parents.push(this);
+	};
+
+	removeChild = function (child) {
+		if (child in this.children) {
+			var children = this.elements.children;
+			for(var i = 0, length = children.length; i < length; i += 1) {
+				if(child === children[i]) {
+					// Delete this element from the list
+					children.splice(i - 1, 1);
+				}
+			}
+			child.removeParent(this);
+		}
+	};
+
+	// Saving created methods in prototype
+	Graph.Node.prototype.set = set;
+	Graph.Node.prototype.get = get;
+	Graph.Node.prototype.addParent = addParent;
+	Graph.Node.prototype.removeParent = removeParent;
+	Graph.Node.prototype.addChild = addChild;
+	Graph.Node.prototype.removeChild = removeChild;
+
+	Graph.LeafNode.prototype.set = set;
+	Graph.LeafNode.prototype.get = get;
+	Graph.LeafNode.prototype.addParent = addParent;
+	Graph.LeafNode.prototype.removeParent = removeParent;
+	Graph.LeafNode.prototype.addChild = addChild;
+	Graph.LeafNode.prototype.removeChild = removeChild;
+
+})(this);

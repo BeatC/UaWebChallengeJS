@@ -1,0 +1,1 @@
+!function(){var d=new Graph.Node("Чи подобаються тобі динамічні мови програмування?");d.addChild(new Graph.Node("Ти хіпстер?")),d.addChild(new Graph.LeafNode("З тебе не вийде програміст(((")),console.log(d)}(this);

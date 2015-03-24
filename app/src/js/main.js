@@ -26,27 +26,3 @@
 
 	//progressPath.addClass('path-progress');
 })();
-
-
-// List of questions
-(function () {
-
-	var QuestionNode = Graph.Node.extend({
-		data: {
-			question: "",
-			answer: true
-		}
-	});
-
-	var root = new QuestionNode({
-		data: {
-			question: "",
-			answer: true
-		}
-	});
-
-		
-
-	root.AddChild();
-
-})();
