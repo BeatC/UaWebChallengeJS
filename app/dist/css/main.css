@@ -1,19 +1,21 @@
 body {
   height: 100vh;
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
   overflow: hidden; }
   body .greeting-section {
-    background-image: url(../img/bg.jpg);
     position: absolute;
     z-index: 100;
     top: 0;
     height: 100vh; }
     body .greeting-section h1 {
-      margin-top: 15%;
+      margin-top: 12%;
       text-align: center;
       font-size: 3em;
       color: #fff; }
     body .greeting-section p {
       margin-top: 3%;
+      font-size: 1.2em;
       color: #fff;
       text-align: center; }
     body .greeting-section .btn-starttest {
@@ -23,7 +25,11 @@ body {
   body .test-section {
     position: absolute;
     z-index: 10;
-    top: 0; }
+    top: 0;
+    background: #fff;
+    border-radius: 6px;
+    padding: 1.5em;
+    transition: height 0.3s easein; }
     body .test-section .question-section ul {
       list-style: none; }
     body .test-section .question-section .question-number {
@@ -33,33 +39,29 @@ body {
     body .test-section .question-section span.question, body .test-section .question-section span.answer {
       font-size: 1.3em; }
     body .test-section .question-section span.answer {
-      margin-left: 1em; }
+      margin-left: 0.3em; }
     body .test-section .question-section ul {
       margin: 2em;
-      margin-left: 3em; }
+      margin-left: 7em;
+      padding: 0; }
+      body .test-section .question-section ul li {
+        display: inline-block;
+        margin-left: 7em; }
       body .test-section .question-section ul input {
         cursor: pointer; }
-    body .test-section .progress-section span.progress-percent {
-      display: block;
-      position: relative;
-      bottom: 100px;
-      left: 2px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 2.5em;
-      color: #444; }
-    body .test-section .progress-section svg.progress-graph {
-      display: block;
-      width: 150px;
-      height: 150px;
-      margin: 0 auto; }
-      body .test-section .progress-section svg.progress-graph circle.circle-inner {
-        stroke-width: 1px;
-        stroke: #ccc;
-        fill: none; }
-      body .test-section .progress-section svg.progress-graph circle.circle-outer {
-        stroke-width: 1px;
-        stroke: #ccc;
-        fill: none; }
-      body .test-section .progress-section svg.progress-graph path.path-progress {
-        fill: green; }
+    body .test-section .result-section {
+      display: none; }
+      body .test-section .result-section .result-header {
+        display: block;
+        font-size: 1.5em;
+        font-weight: 700;
+        text-align: center;
+        color: #444; }
+      body .test-section .result-section .result-language {
+        display: block;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-weight: 700;
+        font-size: 2em;
+        text-align: center;
+        color: #218359; }

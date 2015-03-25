@@ -4,6 +4,8 @@ var Application = Application || {};
 	var startTestBtn = $('.btn-starttest'),
 		nextBtn = $('.btn-next'),
 		greetingsScreen = $('.greeting-section'),
+		testSection = $('.test-section'),
+		questionSection = $('.question-section'),
 		question = $('.question'),
 		questionNumber = $('.number'),
 		questionCounter = 1,
@@ -12,14 +14,25 @@ var Application = Application || {};
 	question.text(activeNode.get('data'));	
 	questionNumber.text(questionCounter);
 
+	testSection.css({
+		top: -(($(window).height() - $('.test-section').height()) / 3),
+		opacity: 0,
+		display: 'none'
+	});
+
 	startTestBtn.click(function () {
 		greetingsScreen.animate({
 			opacity: 0
-		}, 300, 'swing', function () {
+		}, 300, 'easeOutBack', function () {
 			greetingsScreen.css({
 				display: 'none',
 				opacity: 1
 			});
+			testSection.css('display', 'block')
+			.animate({
+				opacity: 1,
+				top: ($(window).height() - $('.test-section').height()) / 3 
+			}, 600, 'easeOutElastic');
 		});
 	});	
 
@@ -35,13 +48,32 @@ var Application = Application || {};
 		if(answer !== undefined) {
 			activeNode = activeNode.get('children')[answer];
 			if(activeNode instanceof Application.Graph.Node) {
-				question.text(activeNode.get('data'));
-				questionCounter += 1;
-				questionNumber.text(questionCounter);
+				questionSection.animate({ opacity: 0 }, 200, 'easeOutBack', function () {
+					question.text(activeNode.get('data'));
+					questionCounter += 1;
+					questionNumber.text(questionCounter);
+					questionSection.animate({ opacity: 1}, 200, 'easeInBack');
+					$('#answer-affirmative').prop('checked', false);
+					$('#answer-negative').prop('checked', false);
+				});
 			} else if(activeNode instanceof Application.Graph.LeafNode) {
-				alert(activeNode.get('data'));
-			}
+				questionSection.animate({
+					opacity: 0
+				}, 300, 'easeOutBack', function () {
+					questionSection.css('display', 'none');
+					
+					$('.result-section').css({
+						opacity: 0,
+						display: 'block'
+					});
 
+					$('.result-section').animate({
+						opacity: 1
+					}, 300, 'easeInBack');
+				});
+
+				$('.result-language').text(activeNode.get('data'));
+			}
 		}
 	});
 

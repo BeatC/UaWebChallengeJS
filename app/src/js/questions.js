@@ -24,7 +24,7 @@ Application.results = Application.results || [];
 	results.push(new Application.Graph.LeafNode('Python'));
 	results.push(new Application.Graph.LeafNode('Ruby'));
 	results.push(new Application.Graph.LeafNode('HTML/CSS'));
-	results.push(new Application.Graph.LeafNode('JS'));
+	results.push(new Application.Graph.LeafNode('JavaScript'));
 	results.push(new Application.Graph.LeafNode('Swift'));
 	results.push(new Application.Graph.LeafNode('Java'));
 	results.push(new Application.Graph.LeafNode('C#'));

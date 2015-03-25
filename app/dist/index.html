@@ -2,34 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Multi parent graph</title>
+	<title>Твоя мова програмування</title>
 	<link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
 	<section class="container-fluid greeting-section">
 		<div class="row">
-			<h1>Lorem ipsum dolor sit amet</h1>
-			<p class="col-md-6 col-md-offset-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quisquam saepe amet quam repellendus ad doloremque tenetur, assumenda, vero facere fugiat 	minus delectus perferendis, totam omnis necessitatibus quaerat, voluptate excepturi.
+			<h1>Твоя мова програмування</h1>
+			<p class="col-md-6 col-md-offset-3">IT-сектор - це досить велика та розвинена галузь. Існує
+				безліч мов програмування, які можуть відповідати практично будь-яким потребам розробника.
+				І це абсолютно нормально, якщо ви ще визначились з тією мовою, яка підхдить вам найкраще.
+				Тому для вашої уваги пропонується тест, який допоможе вам зробити цей складний вибір і 
+				стати частинкою як українського, так і міжнародного IT!
 			</p>
 		</div>
 		<div class="container-fluid btn-wrap">
 			<button class='btn btn-info col-md-2 col-md-offset-5 btn-starttest'>Пройти тестування</button>
 		</div>
 	</section>
-	<section class="container-fluid col-md-12 test-section">
-		<section class="question-section col-md-offset-1 col-md-6">
+	<section class="container-fluid col-md-6 col-md-offset-3 test-section">
+		<section class="question-section">
 			<span class="question-number">Запитання <span class="number"></span>:</span>
 			<span class="question"></span>
 			<ul>
 				<li><input type="radio" name="answer" value="Yes" required="required" id="answer-affirmative"/><span class="answer">Так</span></li>
 				<li><input type="radio" name="answer" value="No" required="required" id="answer-negative"/><span class="answer">Ні</span></li>
 			</ul>
-			<button class="btn btn-default col-md-offset-5 col-md-2 btn-next">Далі</button>
+			<button class="btn btn-success col-md-offset-5 col-md-2 btn-next">Далі</button>
+		</section>
+		<section class="result-section">
+			<span class="result-header">Отже, твій вибір:</span>
+			<span class="result-language"></span>
 		</section>
 	</section>
+
 	<script src="../vendor/jquery/dist/jquery.min.js"></script>
-	<script src="../vendor/snap.svg/dist/snap.svg-min.js"></script>
+	<script src="../vendor/jqueryui/jquery-ui.min.js"></script>
 	<script src="./js/bst.js"></script>
 	<script src="./js/questions.js"></script>
 	<script src="./js/main.js"></script>
