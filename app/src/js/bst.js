@@ -71,14 +71,14 @@ Application.Graph = Application.Graph || {};
 		return null;
 	};
 
-	// Just syntactical sugar for 'push'
+	// Method adding parent to Node
 	addParent = function (parent) {
 		var parents = this.elements.parents;
 		parents.push(parent);
 		parents[parents.length - 1].elements.children.push(this);
 	};
 
-
+	// Method removing parent from Node
 	removeParent = function (parent) {
 		if (parent in this.parents) {
 			var parents = this.elements.parents;
@@ -94,23 +94,35 @@ Application.Graph = Application.Graph || {};
 		}
 	};
 
-	// The same as 'addParent'
+	// Method adding child to Node
 	addChild = function (child) {
 		var children = this.elements.children;
 		children.push(child);
 		children[children.length - 1].elements.parents.push(this);
 	};
 
+	// Method removing child from Node
 	removeChild = function (child) {
+		var children = this.elements.children,
+			childParents = child.parents;
 		if (child in this.children) {
-			var children = this.elements.children;
 			for(var i = 0, length = children.length; i < length; i += 1) {
 				if(child === children[i]) {
 					// Delete this element from the list
 					children.splice(i - 1, 1);
 				}
 			}
-			child.removeParent(this);
+
+			// Implemented in such way because of preventing of infinite recursion
+			if(this in childParents) {
+				for(var i = 0, length = childParents.length; i < length; i += 1) {
+					if(childParents[i] === this) {
+						//Delete it from the list
+						childParents.splice(i - 1, 1);
+					}
+				}
+				child.removeParent(this);
+			}
 		}
 	};
 

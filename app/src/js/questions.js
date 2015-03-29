@@ -16,7 +16,7 @@ Application.results = Application.results || [];
 	questions.push(new Application.Graph.Node('Ти любишь змій?'));
 	questions.push(new Application.Graph.Node('В дитинстві, чи було в тебе бажання знайти скарб?'));
 	questions.push(new Application.Graph.Node('Чи хочеш ти дізнатися як працює браузер?'));
-	questions.push(new Application.Graph.Node('Ти збочинець?'));
+	questions.push(new Application.Graph.Node('Інтерфейси - твоє життя?'));
 	questions.push(new Application.Graph.Node('Строга типізація?'));
 	questions.push(new Application.Graph.Node('Як щодо кави?'));
 	questions.push(new Application.Graph.Node('Як щодо яблук?'));
