@@ -4,7 +4,7 @@ Implementation of the task for UA Web Challenge VII (2015) in nomination *"Front
 
 Address of this repository at GitHub: [UAWebChallengeJS](https://github.com/BeatC/UaWebChallengeJS) 
 
-Github page: [UAWebChallengeJS](beatc.github.io/UaWebChallengeJS)
+Github page: [UAWebChallengeJS](http://beatc.github.io/UaWebChallengeJS)
 
 ## Description
 Required task was done by means of two classes `Node` and `LeafNode`. The first class represents question (every question has parent - except Tree root - previous question - instance of the same `Node` class). `LeafNode` represents results of testing. In our case it is languages of programming which 'suits' to user. Difference between these two classes is following: `LeafNode` can't have any child (because it's leaf node). Implementation of these classes is placed in `bst.js` file (from *Binary Search Tree*). List of questions it's recomended to configure in `questions.js`. There has already created a list of questions and configured relations between them.
